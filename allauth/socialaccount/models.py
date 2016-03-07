@@ -37,7 +37,7 @@ class SocialApp(models.Model):
 
     provider = models.CharField(verbose_name=_('provider'),
                                 max_length=30,
-                                choices=providers.registry.as_choices())
+                                choices=[('linkedin_oauth2', 'LinkedIn'), ('xing', 'Xing'), ('github', 'GitHub')])
     name = models.CharField(verbose_name=_('name'),
                             max_length=40)
     client_id = models.CharField(verbose_name=_('client id'),
@@ -70,7 +70,7 @@ class SocialAccount(models.Model):
     user = models.ForeignKey(allauth.app_settings.USER_MODEL)
     provider = models.CharField(verbose_name=_('provider'),
                                 max_length=30,
-                                choices=providers.registry.as_choices())
+                                choices=[('linkedin_oauth2', 'LinkedIn'), ('xing', 'Xing'), ('github', 'GitHub')])
     # Just in case you're wondering if an OpenID identity URL is going
     # to fit in a 'uid':
     #
